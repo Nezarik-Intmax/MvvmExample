@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:local="clr-namespace:MvvmExample;assembly=MvvmExample"
+			 xmlns:localViewModels="clr-namespace:MvvmExample.ViewModels"
+             x:Class="MvvmExample.MainPage">
+
+	<ContentPage>
+		<ContentPage.BindingContext>
+			<localViewModels:CalculatorViewModel/>
+		</ContentPage.BindingContext>
+        <StackLayout>
+            <Entry Text="{Binding InputData}" 
+				   TextColor="{Binding InputDataColor}"/>
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Text="{Binding MyVvod}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" />
+                <Button Text="x^n" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding stepencommand}"/>
+                <Button Text="корень n степени" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Command="{Binding korencommand}"/>
+                <Button Text="+/-" Grid.Row="2" Grid.Column="0" Command="{Binding smenaznakacommand}" />
+                <Button Text="*" Grid.Row="2" Grid.Column="1" Command="{Binding umnozheniecommand}"/>
+                <Button Text="/" Grid.Row="2" Grid.Column="2" Command="{Binding deleniecommand}"/>
+                <Button Text="-" Grid.Row="2" Grid.Column="3" Command="{Binding vichitaniecommand}"/>
+                <Button Text="7" Grid.Row="3" Grid.Column="0" Command="{Binding button1command}"/>
+                <Button Text="8" Grid.Row="3" Grid.Column="1" Command="{Binding button1command}"/>
+                <Button Text="9" Grid.Row="3" Grid.Column="2" Command="{Binding button1command}"/>
+                <Button Text="+" Grid.Row="3" Grid.Column="3" Command="{Binding slozheniecommand}"/>
+                <Button Text="4" Grid.Row="4" Grid.Column="0" Command="{Binding button1command}"/>
+                <Button Text="5" Grid.Row="4" Grid.Column="1" Command="{Binding button1command}"/>
+                <Button Text="6" Grid.Row="4" Grid.Column="2" Command="{Binding button1command}"/>
+                <Button Text="del" Grid.Row="4" Grid.Column="3" Command="{Binding deletecommand}"/>
+                <Button Text="1" Grid.Row="5" Grid.Column="0" Command="{Binding button1command}"/>
+                <Button Text="2" Grid.Row="5" Grid.Column="1" Command="{Binding button1command}"/>
+                <Button Text="3" Grid.Row="5" Grid.Column="2" Command="{Binding button1command}"/>
+                <Button Text="." Grid.Row="5" Grid.Column="3" Command="{Binding zapyatayacommand}"/>
+            </Grid>
+            <Button Text="Push" 
+					Command="{Binding PushCommand}"/>
+            <Button Text="Pop" 
+					Command="{Binding PopCommand}"/>
+
+        </StackLayout>
+    </ContentPage>
+
+
+	<ContentPage>
+		<ContentPage.BindingContext>
+			<localViewModels:RgbViewModel Color="Aqua" />
+		</ContentPage.BindingContext>
+
+		<StackLayout Padding="10">
+			<BoxView Color="{Binding Color}"
+                 VerticalOptions="FillAndExpand" />
+
+			<Label Text="{Binding R, StringFormat='R = {0:F2}'}"
+               HorizontalOptions="Center" />
+
+			<Slider Value="{Binding R, Mode=TwoWay}" 
+				MaximumTrackColor="blue"/>
+
+			<Label Text="{Binding G, StringFormat='G = {0:F2}'}"
+               HorizontalOptions="Center" />
+
+			<Slider Value="{Binding G, Mode=TwoWay}" 
+				MaximumTrackColor="blue"/>
+
+			<Label Text="{Binding B, StringFormat='B = {0:F2}'}"
+               HorizontalOptions="Center" />
+
+			<Slider Value="{Binding B, Mode=TwoWay}" 
+				MaximumTrackColor="blue"
+				Margin="0, 0, 0, 10"/>
+		</StackLayout>
+	</ContentPage>
+	
+</CarouselPage>
